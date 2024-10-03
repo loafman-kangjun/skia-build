@@ -33,7 +33,7 @@ jobs:
       - run: python3 script/checkout.py --version ${{ env.version }}
       - run: python3 script/build.py --build-type ${{ matrix.build_type }} --machine ${{ matrix.machine }}
       - run: python3 script/archive.py --version ${{ env.version }} --build-type ${{ matrix.build_type }} --machine ${{ matrix.machine }}
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: Skia-${{ env.version }}-macos-${{ matrix.build_type }}-${{ matrix.machine }}.zip
           path: '*.zip'
@@ -58,7 +58,7 @@ jobs:
       - run: PATH=/usr/lib/binutils-2.26/bin:$PATH python3 script/checkout.py --version ${{ env.version }}
       - run: PATH=/usr/lib/binutils-2.26/bin:$PATH python3 script/build.py --build-type ${{ matrix.build_type }}
       - run: PATH=/usr/lib/binutils-2.26/bin:$PATH python3 script/archive.py --version ${{ env.version }} --build-type ${{ matrix.build_type }}
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: Skia-${{ env.version }}-linux-${{ matrix.build_type }}-x64.zip
           path: '*.zip'
@@ -81,7 +81,7 @@ jobs:
       - run: PATH=/usr/lib/binutils-2.26/bin:$PATH python3 script/checkout.py --version ${{ env.version }}
       - run: PATH=/usr/lib/binutils-2.26/bin:$PATH python3 script/build.py
       - run: PATH=/usr/lib/binutils-2.26/bin:$PATH python3 script/archive.py --version ${{ env.version }} --classifier gcc4
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: Skia-${{ env.version }}-linux-Release-x64-gcc4.zip
           path: '*.zip'
@@ -108,7 +108,7 @@ jobs:
       - run: PATH=/usr/lib/binutils-2.26/bin:$PATH python3 script/checkout.py --version ${{ env.version }} --system android --machine ${{ matrix.machine }}
       - run: PATH=/usr/lib/binutils-2.26/bin:$PATH python3 script/build.py --system android --machine ${{ matrix.machine }} --ndk "/usr/local/lib/android/sdk/ndk-bundle"
       - run: PATH=/usr/lib/binutils-2.26/bin:$PATH python3 script/archive.py --system android --machine ${{ matrix.machine }}
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: Skia-${{ env.version }}-android-Release-${{ matrix.machine }}.zip
           path: '*.zip'
@@ -138,7 +138,7 @@ jobs:
         run: python3 script/build.py --build-type ${{ matrix.build_type }}
       - shell: bash
         run: python3 script/archive.py --version ${{ env.version }} --build-type ${{ matrix.build_type }}
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: Skia-${{ env.version }}-windows-${{ matrix.build_type }}-x64.zip
           path: '*.zip'
