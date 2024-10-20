@@ -37,9 +37,9 @@ def main():
   ]
 
   out = os.path.join('out', build_type + '-' + machine)
-  gn = 'gn.exe' if 'windows' == system else 'gn'
+  gn = 'gn.exe'
   subprocess.check_call([os.path.join('bin', gn), 'gen', out, '--args=' + ' '.join(args)])
-  ninja = 'ninja.exe' if 'windows' == system else 'ninja'
+  ninja = 'ninja.exe'
   subprocess.check_call([os.path.join('..', 'depot_tools', ninja), '-C', out, 'skia', 'modules'])
 
   return 0
