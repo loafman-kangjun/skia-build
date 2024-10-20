@@ -22,7 +22,7 @@ jobs:
       - shell: bash
         run: python3 script/checkout.py --version ${{ env.version }}
       - shell: bash
-        run: dir /s
+        run: dir
       - shell: bash
         run: python3 script/build.py --build-type ${{ matrix.build_type }}
       - shell: bash
