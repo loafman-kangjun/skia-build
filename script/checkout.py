@@ -46,6 +46,7 @@ def main():
     env = os.environ.copy()
     env['PYTHONHTTPSVERIFY']='0'
     subprocess.check_call(["python", "tools/git-sync-deps"], env=env)
+    subprocess.check_call(["python", "bin/fetch-ninja"], env=env)
 
   return 0
 
