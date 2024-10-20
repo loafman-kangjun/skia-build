@@ -41,19 +41,11 @@ def main():
   print("> Checking out", commit)
   subprocess.check_call(["git", "-c", "advice.detachedHead=false", "checkout", commit])
 
-  # Apply patches
-  subprocess.check_call(["git", "reset", "--hard"])
-  for x in pathlib.Path(os.pardir, 'patches').glob('*.patch'):
-    print("> Applying", x)
-    subprocess.check_call(["git", "apply", str(x)])
-
   # git deps
   if 'windows' == common.system():
     env = os.environ.copy()
     env['PYTHONHTTPSVERIFY']='0'
     subprocess.check_call(["python", "tools/git-sync-deps"], env=env)
-  else:
-    subprocess.check_call(["python2", "tools/git-sync-deps"])
 
   return 0
 
